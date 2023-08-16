@@ -4,15 +4,13 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record DadosCadastroUser(
-        @NotBlank
+public record ListaCadastroUsers(
         String nome,
-        @NotBlank
-        @Email
         String email,
-        @NotNull
         Perfil perfil,
-        @NotNull
         Long status
 ) {
+        public ListaCadastroUsers(User user) {
+                this(user.getNome(), user.getEmail(), user.getPerfil(), user.getStatus());
+        }
 }
